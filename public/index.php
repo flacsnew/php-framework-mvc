@@ -3,6 +3,7 @@ require '../vendor/core/Router.php';
 require '../vendor/libs/functions.php';
 require '../app/controllers/Main.php';
 require '../app/controllers/Posts.php';
+require '../app/controllers/PostsNew.php';
 
 $query = rtrim($_SERVER['QUERY_STRING'], '/');
 

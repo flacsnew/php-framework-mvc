@@ -73,11 +73,20 @@ class Router {
     {
         if (self::matchRoute($url))
         {
-            $controller = self::$route['controller'];
-            self::upperCamelCase($controller);
+            $controller = self::upperCamelCase(self::$route['controller']);
             if (class_exists($controller))
             {
-                echo 'OK';
+                $cObj = new $controller();
+                $action = self::lowerCamelCase(self::$route['action']);
+                if (method_exists($cObj, $action))
+                {
+                    $cObj->$action();
+                    echo 'OK';
+                }
+                    else
+                {
+                    echo "Метод <b>$action</b> в контролере <b>$controller</b> не найден.";
+                }
             }
                 else
             {
@@ -92,7 +101,11 @@ class Router {
     }
 
     protected static function upperCamelCase($name){
-        debug($name);
+        return str_replace(' ', '', ucwords(str_replace('-', ' ', $name)));
+    }
+
+    protected static function lowerCamelCase($name){
+        return lcfirst(self::upperCamelCase($name));
     }
 
 }
