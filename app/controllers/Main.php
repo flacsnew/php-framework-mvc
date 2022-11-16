@@ -4,7 +4,7 @@
     Description of Main
 */
 class Main {
-    public function index(){
-        echo "Main::index() is here.";
+    public function indexAction(){
+        echo "Main::index().";
     }
 }
