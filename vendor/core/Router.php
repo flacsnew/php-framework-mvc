@@ -41,4 +41,18 @@ class Router {
         return false;
     }
 
+    // Обработка маршрутов
+    public static function dispatch($url)
+    {
+        if (self::matchRoute($url))
+        {
+            echo 'OK';
+        }
+            else
+        {
+            http_response_code(404);
+            include '404.html';
+        }
+    }
+
 }
