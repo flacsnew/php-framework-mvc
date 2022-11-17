@@ -58,8 +58,8 @@ class Router {
                 {
                     $route['action'] = 'index';
                 }
+                $route['controller'] = self::upperCamelCase($route['controller']);
                 self::$route = $route;
-                debug(self::$route);
                 return true;
             }
         }
@@ -73,17 +73,17 @@ class Router {
      */
     public static function dispatch($url)
     {
+        $url = self::removeQueryString($url);
         if (self::matchRoute($url))
         {
-            $controller = "app\controllers\\" . self::upperCamelCase(self::$route['controller']);
+            $controller = "app\controllers\\" . self::$route['controller'];
             if (class_exists($controller))
             {
-                $cObj = new $controller();
+                $cObj = new $controller(self::$route);
                 $action = self::lowerCamelCase(self::$route['action']) . 'Action';
                 if (method_exists($cObj, $action))
                 {
                     $cObj->$action();
-                    echo 'OK';
                 }
                     else
                 {
@@ -108,6 +108,26 @@ class Router {
 
     protected static function lowerCamelCase($name){
         return lcfirst(self::upperCamelCase($name));
+    }
+
+    /**
+     * Удаляет GET параметры, если они есть
+     * @param string $url текущий URL
+     * @return string
+     */
+    protected static function removeQueryString($url){
+        if ($url)
+        {
+            $params = explode('&', $url, 2);
+            if (strpos($params[0], '=') === false)
+            {
+                return rtrim($params[0], '/');
+            }
+                else
+            {
+                return '';
+            }
+        }
     }
 
 }

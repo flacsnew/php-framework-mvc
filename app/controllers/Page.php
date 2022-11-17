@@ -7,10 +7,10 @@ use vendor\core\base\Controller;
 /*
     Description of Main
 */
-class Main extends Controller {
+class Page extends Controller {
 
-    public function indexAction(){
-        echo "Main::index().";
+    public function viewAction(){
+        echo "Page::View.";
     }
 
 }

@@ -2,10 +2,12 @@
 
 namespace app\controllers;
 
+use vendor\core\base\Controller;
+
 /*
     Description of PostsNew
 */
-class PostsNew {
+class PostsNew extends Controller {
 
     public function indexAction(){
         echo "PostsNew::index().";
