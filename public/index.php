@@ -1,5 +1,8 @@
 <?php
-require '../vendor/core/Router.php';
+error_reporting(E_ALL);
+
+use vendor\core\Router;
+
 require '../vendor/libs/functions.php';
 
 define('WWW', __DIR__);
@@ -9,13 +12,13 @@ define('APP', dirname(__DIR__) . '/app');
 
 // autoload classes
 spl_autoload_register(function($class){
-    $file = APP . "/controllers/$class.php";
+    $file = ROOT . '/' . str_replace('\\', '/', $class) . '.php';
     if (is_file($file)) require_once $file;
 });
 
 $query = rtrim($_SERVER['QUERY_STRING'], '/');
 
-// pages/index -> posts/index
+// url: pages/* -> posts/*
 Router::add('^pages/?(?P<action>[a-z-]+)?$', ['controller' => 'posts']);
 
 // default routs

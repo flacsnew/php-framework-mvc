@@ -1,5 +1,7 @@
 <?php
 
+namespace vendor\core;
+
 /*
     Description of Router
 */
@@ -73,7 +75,7 @@ class Router {
     {
         if (self::matchRoute($url))
         {
-            $controller = self::upperCamelCase(self::$route['controller']);
+            $controller = "app\controllers\\" . self::upperCamelCase(self::$route['controller']);
             if (class_exists($controller))
             {
                 $cObj = new $controller();
