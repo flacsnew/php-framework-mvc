@@ -13,6 +13,8 @@ abstract class Controller {
     public $view;
     public $layout;
 
+    public $vars = [];
+
     public function __construct($route)
     {
         $this->route = $route;
@@ -21,7 +23,11 @@ abstract class Controller {
 
     public function getView(){
         $vObj = new View($this->route, $this->layout, $this->view);
-        $vObj->render();
+        $vObj->render($this->vars);
+    }
+
+    public function set($vars){
+        $this->vars = $vars;
     }
 
 }

@@ -7,9 +7,17 @@ namespace app\controllers;
 */
 class Main extends Application {
 
+    public $layout = 'main';
+
     public function indexAction()
     {
-        echo __METHOD__ . "<br/>";
+        //$this->layout = false;
+        $name = 'flacs';
+        $this->set(['name' => $name]);
+    }
+
+    public function testAction(){
+        
     }
 
 }
