@@ -2,12 +2,10 @@
 
 namespace app\controllers;
 
-use vendor\core\base\Controller;
-
 /*
     Description of Main
 */
-class Page extends Controller {
+class Page extends Application {
 
     public function viewAction(){
         echo "Page::View.";

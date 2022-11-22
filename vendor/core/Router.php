@@ -84,6 +84,7 @@ class Router {
                 if (method_exists($cObj, $action))
                 {
                     $cObj->$action();
+                    $cObj->getView();
                 }
                     else
                 {
@@ -102,10 +103,20 @@ class Router {
         }
     }
 
+    /**
+     * Преобразуем имена к виду CamelCase
+     * @param string $name строка для преобразования
+     * @return string
+     */
     protected static function upperCamelCase($name){
         return str_replace(' ', '', ucwords(str_replace('-', ' ', $name)));
     }
 
+    /**
+     * Преобразуем имена к виду camelCase
+     * @param string $name строка для преобразования
+     * @return string
+     */
     protected static function lowerCamelCase($name){
         return lcfirst(self::upperCamelCase($name));
     }

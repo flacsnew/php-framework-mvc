@@ -2,15 +2,14 @@
 
 namespace app\controllers;
 
-use vendor\core\base\Controller;
-
 /*
     Description of Main
 */
-class Main extends Controller {
+class Main extends Application {
 
-    public function indexAction(){
-        echo "Main::index().";
+    public function indexAction()
+    {
+        echo __METHOD__ . "<br/>";
     }
 
 }
