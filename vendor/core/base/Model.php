@@ -22,8 +22,8 @@ abstract class Model {
     }
 
     public function findAll(){
-        $sql = "SELECT * FROM {$this->table}";
-        $this->pdo->query($sql);
+        $sql = "SELECT * FROM `{$this->table}`";
+        return $this->pdo->query($sql);
     }
 
 }
