@@ -14,7 +14,7 @@ class MainController extends ApplicationController {
     public function indexAction()
     {
         $model = new Main;
-        // $res = $model->query("CREATE TABLE `posts` SELECT * FROM `category`.`categories`"); 
+        //$res = $model->query("CREATE TABLE `posts` SELECT * FROM `category`.`categories`"); 
         $posts = $model->findAll();
         $title = 'PAGE TITLE';
         $content = "page content";

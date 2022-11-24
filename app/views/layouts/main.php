@@ -11,6 +11,16 @@
     <div class="container">
       <h1><?= $title; ?></h1>
       <?= $content; ?>
+      <div class="card">
+        <div class="card-body">
+          <code>
+            <?
+              debug(\vendor\core\Db::$countSql);
+              debug(\vendor\core\Db::$queries);
+            ?>
+          </code>
+        </div>
+      </div>
     </div>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
   </body>

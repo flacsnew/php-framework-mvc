@@ -9,7 +9,9 @@ class Db {
 
     protected $pdo;
     protected static $instance;
-
+    public static $countSql = 0;
+    public static $queries = [];
+    
     protected function __construct()
     {
         $db = require ROOT . "/config/config_db.php";
@@ -33,6 +35,8 @@ class Db {
      * Для CREATE, DELETE и пр.
      */
     public function execute($sql){
+        self::$countSql++;
+        self::$queries[] = $sql;
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute();
     }
@@ -41,6 +45,8 @@ class Db {
      * Для SELECT
      */
     public function query($sql){
+        self::$countSql++;
+        self::$queries[] = $sql;
         $stmt = $this->pdo->prepare($sql);
         $res = $stmt->execute();
         if ($res !== false)
