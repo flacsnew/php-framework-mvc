@@ -5,7 +5,7 @@ namespace app\controllers;
 /*
     Description of Main
 */
-class Page extends Application {
+class PageController extends ApplicationController {
 
     public function viewAction(){
         echo "Page::View.";

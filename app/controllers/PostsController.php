@@ -5,7 +5,7 @@ namespace app\controllers;
 /*
     Description of Posts
 */
-class Posts extends Application {
+class PostsController extends ApplicationController {
 
     public function indexAction(){
         echo "Posts::index().";

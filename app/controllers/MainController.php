@@ -5,7 +5,7 @@ namespace app\controllers;
 /*
     Description of Main
 */
-class Main extends Application {
+class MainController extends ApplicationController {
 
     public $layout = 'main';
 
@@ -13,7 +13,10 @@ class Main extends Application {
     {
         //$this->layout = false;
         $name = 'flacs';
-        $this->set(['name' => $name]);
+        $this->set([
+            'name' => $name, 
+            'colors' => ['red', 'white']
+        ]);
     }
 
     public function testAction(){
