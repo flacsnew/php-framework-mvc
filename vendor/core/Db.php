@@ -34,21 +34,21 @@ class Db {
     /**
      * Для CREATE, DELETE и пр.
      */
-    public function execute($sql){
+    public function execute($sql, $params = []){
         self::$countSql++;
         self::$queries[] = $sql;
         $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute();
+        return $stmt->execute($params);
     }
 
     /**
      * Для SELECT
      */
-    public function query($sql){
+    public function query($sql, $params = []){
         self::$countSql++;
         self::$queries[] = $sql;
         $stmt = $this->pdo->prepare($sql);
-        $res = $stmt->execute();
+        $res = $stmt->execute($params);
         if ($res !== false)
         {
             return $stmt->fetchAll();
